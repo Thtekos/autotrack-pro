@@ -72,20 +72,126 @@
 <!------------------------------------------------------------------------------------->
 
 <main class="container" style="padding-top: 100px;">
-    <!-- Page-specific content starts here -->
 
-    <section class="text-center">
-        <h1>Precision. Performance. Control.</h1>
+    <!-- Page Title -->
+    <section class="mb-5 text-center">
+        <h1>Workshop Task Control</h1>
         <p class="lead">
-            A high-performance task management system designed for luxury automotive workshops.
+            Manage, prioritize, and track service operations with precision.
         </p>
-        
-        <a href="tasks.html" class="btn btn-outline-danger btn-lg mt-3">
-            Go to Tasks
-        </a>
     </section>
 
-    <!-- Page-specific content ends here -->
+    <!-- Task Creation Form -->
+    <section class="mb-5">
+        <h4 class="mb-3">Add New Task</h4>
+
+        <form id="taskForm" class="row g-3">
+
+            <div class="col-md-4">
+                <label for="taskName" class="form-label">Task Name</label>
+                <input type="text" id="taskName" class="form-control" required>
+            </div>
+
+            <div class="col-md-4">
+                <label for="taskDueDate" class="form-label">Due Date</label>
+                <input type="date" id="taskDueDate" class="form-control" required>
+            </div>
+
+            <div class="col-md-4">
+                <label for="taskPriority" class="form-label">Priority</label>
+                <select id="taskPriority" class="form-select">
+                    <option value="High">High (Urgent)</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Low">Low</option>
+                </select>
+            </div>
+
+            <div class="col-12">
+                <label for="taskDescription" class="form-label">Description</label>
+                <textarea id="taskDescription" class="form-control" rows="3"></textarea>
+            </div>
+
+            <div class="col-12">
+                <button type="submit" class="btn btn-outline-danger">
+                    Add Task
+                </button>
+            </div>
+
+        </form>
+    </section>
+
+    <!-- Task Summary -->
+    <section class="mb-5">
+        <div class="row text-center">
+
+            <div class="col-md-4">
+                <div class="card bg-dark text-light">
+                    <div class="card-body">
+                        <h6>Total Tasks</h6>
+                        <h3 id="totalTasks">0</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card bg-dark text-light">
+                    <div class="card-body">
+                        <h6>Pending</h6>
+                        <h3 id="pendingTasks">0</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card bg-dark text-light">
+                    <div class="card-body">
+                        <h6>Completed</h6>
+                        <h3 id="completedTasks">0</h3>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Filters & Sorting -->
+    <section class="mb-4 d-flex justify-content-between align-items-center flex-wrap">
+        <div class="mb-2">
+            <select id="statusFilter" class="form-select">
+                <option value="all">All Tasks</option>
+                <option value="pending">Pending</option>
+                <option value="completed">Completed</option>
+            </select>
+        </div>
+
+        <div class="mb-2">
+            <select id="sortTasks" class="form-select">
+                <option value="date">Sort by Due Date</option>
+                <option value="name">Sort by Name</option>
+            </select>
+        </div>
+    </section>
+
+    <!-- Task Table -->
+    <section>
+        <div class="table-responsive">
+            <table class="table table-dark table-hover align-middle">
+                <thead>
+                    <tr>
+                        <th>Task</th>
+                        <th>Due</th>
+                        <th>Priority</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="taskTableBody">
+                    <!-- Tasks will be injected here -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+
 </main>
 
 <!------------------------------------------------------------------------------------->
