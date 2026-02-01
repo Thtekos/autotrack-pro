@@ -4,6 +4,7 @@
 
 //Load tasks from localStorage or initialize empty array
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+let taskChart = null;
 
 //Cache DOM elements
 const taskForm = document.getElementById("taskForm");
@@ -93,6 +94,7 @@ function renderTasks() {
     });
 
     updateSummary();
+    updateChart();
 }
 
 //Task completion toggle
@@ -126,6 +128,44 @@ function updateSummary() {
     totalTasksEl.textContent = tasks.length;
     pendingTasksEl.textContent = tasks.filter(t => !t.completed).length;
     completedTasksEl.textContent = tasks.filter(t => t.completed).length;
+}
+
+function updateChart() {
+    const completed = tasks.filter(t => t.completed).length;
+    const pending = tasks.filter(t => !t.completed).length;
+
+    const ctx = document.getElementById("taskChart");
+
+    if (!ctx) return;
+
+    if (taskChart) {
+        taskChart.destroy();
+    }
+
+    taskChart = new Chart(ctx, {
+        type: "pie",
+        data: {
+            labels: ["Completed", "Pending"],
+            datasets: [{
+                data: [completed, pending],
+                backgroundColor: [
+                    "#c8102e", // Porsche red
+                    "#444444"  // dark gray
+                ]
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: "bottom",
+                    labels: {
+                        color: "#ffffff"
+                    }
+                }
+            }
+        }
+    });
 }
 
 //Filter/Sort changes reaction
