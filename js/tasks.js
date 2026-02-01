@@ -34,6 +34,9 @@ taskForm.addEventListener("submit", function (e) {
     saveTasks();
     renderTasks();
     taskForm.reset();
+
+    //Connect activity to task action
+    addActivity(`Task added: ${newTask.name}`);
 });
 
 //Save tasks to LocalStorage
@@ -96,12 +99,23 @@ function renderTasks() {
 function toggleTask(id) {
     const task = tasks.find(t => t.id === id);
     task.completed = !task.completed;
+
+    if (task.completed) {
+        addActivity(`Task completed: ${task.name}`);
+    }
+
     saveTasks();
     renderTasks();
 }
 
 //Delete task
 function deleteTask(id) {
+    const task = tasks.find(t => t.id === id);
+
+    if (task) {
+        addActivity(`Task deleted: ${task.name}`);
+    }
+
     tasks = tasks.filter(task => task.id !== id);
     saveTasks();
     renderTasks();
