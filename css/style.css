@@ -1,3 +1,58 @@
 body {
     font-family: 'Inter', sans-serif;
 }
+
+/* -------------------Dark Mode Styles ------------------------- */
+
+body.dark-mode {
+    background-color: #111111;
+    color: #eaeaea;
+}
+
+/* Navbar */
+body.dark-mode .navbar {
+    background-color: #000000 !important;
+}
+
+/* Cards */
+body.dark-mode .card {
+    background-color: #1c1c1c;
+    border-color: #333;
+}
+
+/* Tables */
+body.dark-mode .table {
+    color: #eaeaea;
+}
+
+body.dark-mode .table thead {
+    background-color: #000000;
+}
+
+/* Forms */
+body.dark-mode .form-control,
+body.dark-mode .form-select {
+    background-color: #1c1c1c;
+    color: #eaeaea;
+    border-color: #444;
+}
+
+body.dark-mode .form-control::placeholder {
+    color: #888;
+}
+
+/* List groups (Latest Activity) */
+body.dark-mode .list-group-item {
+    background-color: #1c1c1c;
+    color: #eaeaea;
+    border-color: #333;
+}
+
+body.dark-mode .navbar .nav-link {
+    color: #eaeaea;
+}
+
+.navbar .nav-link:hover {
+    color: #c8102e !important;
+    opacity: 0.85;
+}
