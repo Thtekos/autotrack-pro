@@ -56,3 +56,21 @@ body.dark-mode .navbar .nav-link {
     color: #c8102e !important;
     opacity: 0.85;
 }
+
+/* ---------- API Dark Mode Fix --------------- */
+
+body.dark-mode .card {
+    color: #eaeaea;
+}
+
+body.dark-mode .card .card-title {
+    color: #ffffff;
+}
+
+body.dark-mode .card .text-muted {
+    color: #bbbbbb !important;
+}
+
+body.dark-mode .card p {
+    color: #eaeaea;
+}

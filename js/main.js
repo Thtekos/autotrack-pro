@@ -76,3 +76,65 @@ if (darkModeToggle) {
         }
     });
 }
+
+// --------------------------------
+// Public API: Performance Insight
+// --------------------------------
+
+async function loadPerformanceQuote() {
+    const quoteText = document.getElementById("quoteText");
+    const quoteAuthor = document.getElementById("quoteAuthor");
+
+    // Only run on pages that have the section
+    if (!quoteText || !quoteAuthor) return;
+
+    try {
+        const response = await fetch("https://api.quotable.io/random");
+        const data = await response.json();
+
+        quoteText.textContent = `"${data.content}"`;
+        quoteAuthor.textContent = `— ${data.author}`;
+    } catch (error) {
+        quoteText.textContent = "Precision comes from preparation.";
+        quoteAuthor.textContent = "— AutoTrack Pro";
+    }
+}
+
+// Load API content on page load
+loadPerformanceQuote();
+
+
+// ----------------------------------
+// Public API: Weather (Open-Meteo)
+// --------------------------------
+
+async function loadWeather() {
+    const locationEl = document.getElementById("weatherLocation");
+    const tempEl = document.getElementById("weatherTemp");
+    const conditionEl = document.getElementById("weatherCondition");
+
+    // Only run on pages that have the widget
+    if (!locationEl || !tempEl || !conditionEl) return;
+
+    try {
+        // Athens coordinates (can be changed)
+        const response = await fetch(
+            "https://api.open-meteo.com/v1/forecast?latitude=37.9838&longitude=23.7275&current_weather=true"
+        );
+
+        const data = await response.json();
+        const weather = data.current_weather;
+
+        locationEl.textContent = "Athens, Greece";
+        tempEl.textContent = `${weather.temperature}°C`;
+        conditionEl.textContent = `Wind: ${weather.windspeed} km/h`;
+
+    } catch (error) {
+        locationEl.textContent = "Weather unavailable";
+        tempEl.textContent = "--";
+        conditionEl.textContent = "";
+    }
+}
+
+// Load weather on page load
+loadWeather();
