@@ -21,247 +21,247 @@
     <link rel="stylesheet" href="css/style.css">
 
 </head>
-<body>
+    <body>
 
-<!------------------------------------------------------------------------------------->
+        <!------------------------------------------------------------------------------------->
 
-<header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div class="container">
-            
-            <!-- Logo & Title -->
-            <a class="navbar-brand d-flex align-items-center" href="index.html">
-                <i class="bi bi-car-front-fill me-2"></i>
-                <span>AutoTrack Pro</span>
-            </a>
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+                <div class="container">
+                    
+                    <!-- Logo & Title -->
+                    <a class="navbar-brand d-flex align-items-center" href="index.html">
+                        <i class="bi bi-car-front-fill me-2"></i>
+                        <span>AutoTrack Pro</span>
+                    </a>
 
-            <!-- Hamburger Menu -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
-                aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+                    <!-- Hamburger Menu -->
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+                        aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
 
-            <!-- Navigation Links -->
-            <div class="collapse navbar-collapse" id="mainNavbar">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <button id="darkModeToggle"
-                                class="nav-link btn btn-link text-danger ms-lg-3"
-                                aria-label="Toggle dark mode">
-                            Dark Mode
-                        </button>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="tasks.html">Tasks</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="services.html">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="about.html">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact</a>
-                    </li>
-                </ul>
-            </div>
-
-        </div>
-    </nav>
-</header>
-
-<!------------------------------------------------------------------------------------->
-
-<main class="container" style="padding-top: 100px;">
-
-    <!-- Page Title -->
-    <section class="mb-5 text-center">
-        <h1>Workshop Task Control</h1>
-        <p class="lead">
-            Manage, prioritize, and track service operations with precision.
-        </p>
-    </section>
-
-    <!-- Task Creation Form -->
-    <section class="mb-5">
-        <h4 class="mb-3">Add New Task</h4>
-
-        <form id="taskForm" class="row g-3">
-
-            <div class="col-md-4">
-                <label for="taskName" class="form-label">Task Name</label>
-                <input type="text" id="taskName" class="form-control" required>
-            </div>
-
-            <div class="col-md-4">
-                <label for="taskDueDate" class="form-label">Due Date</label>
-                <input type="date" id="taskDueDate" class="form-control" required>
-            </div>
-
-            <div class="col-md-4">
-                <label for="taskPriority" class="form-label">Priority</label>
-                <select id="taskPriority" class="form-select">
-                    <option value="High">High (Urgent)</option>
-                    <option value="Medium">Medium</option>
-                    <option value="Low">Low</option>
-                </select>
-            </div>
-
-            <div class="col-12">
-                <label for="taskDescription" class="form-label">Description</label>
-                <textarea id="taskDescription" class="form-control" rows="3"></textarea>
-            </div>
-
-            <div class="col-12">
-                <button type="submit" class="btn btn-outline-danger">
-                    Add Task
-                </button>
-            </div>
-
-        </form>
-    </section>
-
-    <!-- Task Summary -->
-    <section class="mb-5">
-        <div class="row text-center">
-
-            <div class="col-md-4">
-                <div class="card bg-dark text-light">
-                    <div class="card-body">
-                        <h6>Total Tasks</h6>
-                        <h3 id="totalTasks">0</h3>
+                    <!-- Navigation Links -->
+                    <div class="collapse navbar-collapse" id="mainNavbar">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <button id="darkModeToggle"
+                                        class="nav-link btn btn-link text-danger ms-lg-3"
+                                        aria-label="Toggle dark mode">
+                                    Dark Mode
+                                </button>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.html">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="tasks.html">Tasks</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="services.html">Services</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="about.html">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="contact.html">Contact</a>
+                            </li>
+                        </ul>
                     </div>
+
                 </div>
-            </div>
+            </nav>
+        </header>
 
-            <div class="col-md-4">
-                <div class="card bg-dark text-light">
-                    <div class="card-body">
-                        <h6>Pending</h6>
-                        <h3 id="pendingTasks">0</h3>
-                    </div>
-                </div>
-            </div>
+        <!------------------------------------------------------------------------------------->
 
-            <div class="col-md-4">
-                <div class="card bg-dark text-light">
-                    <div class="card-body">
-                        <h6>Completed</h6>
-                        <h3 id="completedTasks">0</h3>
-                    </div>
-                </div>
-            </div>
+        <main class="container" style="padding-top: 100px;">
 
-        </div>
-    </section>
-
-    <!-- Filters & Sorting -->
-    <section class="mb-4 d-flex justify-content-between align-items-center flex-wrap">
-        <div class="mb-2">
-            <select id="statusFilter" class="form-select">
-                <option value="all">All Tasks</option>
-                <option value="pending">Pending</option>
-                <option value="completed">Completed</option>
-            </select>
-        </div>
-
-        <div class="mb-2">
-            <select id="sortTasks" class="form-select">
-                <option value="date">Sort by Due Date</option>
-                <option value="name">Sort by Name</option>
-            </select>
-        </div>
-    </section>
-
-    <!-- Task Table -->
-    <section>
-        <div class="table-responsive">
-            <table class="table table-dark table-hover align-middle">
-                <thead>
-                    <tr>
-                        <th>Task</th>
-                        <th>Due</th>
-                        <th>Priority</th>
-                        <th>Status</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody id="taskTableBody">
-                    <!-- Tasks will be injected here -->
-                </tbody>
-            </table>
-        </div>
-    </section>
-
-    <!-- Task Analytics -->
-    <section class="mt-5">
-        <h4 class="text-center mb-4">Task Analytics</h4>
-
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <canvas id="taskChart" aria-label="Task analytics chart"></canvas>    
-            </div>
-        </div>
-    </section>
-
-</main>
-
-<!------------------------------------------------------------------------------------->
-
-<footer class="bg-dark text-light mt-5">
-    <div class="container py-4">
-        <div class="row">
-
-            <!-- Footer Branding -->
-            <div class="col-md-4 mb-3">
-                <h5>AutoTrack Pro</h5>
-                <p class="small">
-                    Precision task orchestration for high-performance automotive service centers.
+            <!-- Page Title -->
+            <section class="mb-5 text-center">
+                <h1>Workshop Task Control</h1>
+                <p class="lead">
+                    Manage, prioritize, and track service operations with precision.
                 </p>
+            </section>
+
+            <!-- Task Creation Form -->
+            <section class="mb-5">
+                <h4 class="mb-3">Add New Task</h4>
+
+                <form id="taskForm" class="row g-3">
+
+                    <div class="col-md-4">
+                        <label for="taskName" class="form-label">Task Name</label>
+                        <input type="text" id="taskName" class="form-control" required>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="taskDueDate" class="form-label">Due Date</label>
+                        <input type="date" id="taskDueDate" class="form-control" required>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="taskPriority" class="form-label">Priority</label>
+                        <select id="taskPriority" class="form-select">
+                            <option value="High">High (Urgent)</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Low">Low</option>
+                        </select>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="taskDescription" class="form-label">Description</label>
+                        <textarea id="taskDescription" class="form-control" rows="3"></textarea>
+                    </div>
+
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-outline-danger">
+                            Add Task
+                        </button>
+                    </div>
+
+                </form>
+            </section>
+
+            <!-- Task Summary -->
+            <section class="mb-5">
+                <div class="row text-center">
+
+                    <div class="col-md-4">
+                        <div class="card bg-dark text-light">
+                            <div class="card-body">
+                                <h6>Total Tasks</h6>
+                                <h3 id="totalTasks">0</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card bg-dark text-light">
+                            <div class="card-body">
+                                <h6>Pending</h6>
+                                <h3 id="pendingTasks">0</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card bg-dark text-light">
+                            <div class="card-body">
+                                <h6>Completed</h6>
+                                <h3 id="completedTasks">0</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Filters & Sorting -->
+            <section class="mb-4 d-flex justify-content-between align-items-center flex-wrap">
+                <div class="mb-2">
+                    <select id="statusFilter" class="form-select">
+                        <option value="all">All Tasks</option>
+                        <option value="pending">Pending</option>
+                        <option value="completed">Completed</option>
+                    </select>
+                </div>
+
+                <div class="mb-2">
+                    <select id="sortTasks" class="form-select">
+                        <option value="date">Sort by Due Date</option>
+                        <option value="name">Sort by Name</option>
+                    </select>
+                </div>
+            </section>
+
+            <!-- Task Table -->
+            <section>
+                <div class="table-responsive">
+                    <table class="table table-dark table-hover align-middle">
+                        <thead>
+                            <tr>
+                                <th>Task</th>
+                                <th>Due</th>
+                                <th>Priority</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="taskTableBody">
+                            <!-- Tasks will be injected here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Task Analytics -->
+            <section class="mt-5">
+                <h4 class="text-center mb-4">Task Analytics</h4>
+
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <canvas id="taskChart" aria-label="Task analytics chart"></canvas>    
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!------------------------------------------------------------------------------------->
+
+        <footer class="bg-dark text-light mt-5">
+            <div class="container py-4">
+                <div class="row">
+
+                    <!-- Footer Branding -->
+                    <div class="col-md-4 mb-3">
+                        <h5>AutoTrack Pro</h5>
+                        <p class="small">
+                            Precision task orchestration for high-performance automotive service centers.
+                        </p>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div class="col-md-4 mb-3">
+                        <h6>Contact</h6>
+                        <p class="small mb-1">Email: info@autotrackpro.com</p>
+                        <p class="small mb-0">Phone: +30 210 000 0000</p>
+                    </div>
+
+                    <!-- Social Media -->
+                    <div class="col-md-4 mb-3">
+                        <h6>Follow Us</h6>
+                        <a href="#" class="text-light me-3" aria-label="Facebook">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+                        <a href="#" class="text-light me-3" aria-label="Instagram">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                        <a href="#" class="text-light" aria-label="LinkedIn">
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+                    </div>
+
+                </div>
+
+                <hr class="border-secondary">
+
+                <p class="text-center small mb-0">
+                    © 2026 AutoTrack Performance. Engineered for excellence.
+                </p>
+                
             </div>
+        </footer>
 
-            <!-- Contact Info -->
-            <div class="col-md-4 mb-3">
-                <h6>Contact</h6>
-                <p class="small mb-1">Email: info@autotrackpro.com</p>
-                <p class="small mb-0">Phone: +30 210 000 0000</p>
-            </div>
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-            <!-- Social Media -->
-            <div class="col-md-4 mb-3">
-                <h6>Follow Us</h6>
-                <a href="#" class="text-light me-3" aria-label="Facebook">
-                    <i class="bi bi-facebook"></i>
-                </a>
-                <a href="#" class="text-light me-3" aria-label="Instagram">
-                    <i class="bi bi-instagram"></i>
-                </a>
-                <a href="#" class="text-light" aria-label="LinkedIn">
-                    <i class="bi bi-linkedin"></i>
-                </a>
-            </div>
-
-        </div>
-
-        <hr class="border-secondary">
-
-        <p class="text-center small mb-0">
-            © 2026 AutoTrack Performance. Engineered for excellence.
-        </p>
-        
-    </div>
-</footer>
-
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-<!-- Custom JS -->
-<script src="js/main.js"></script>
-<!-- To load the Chart.js before the chart creation -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="js/tasks.js"></script>
-</body>
+        <!-- Custom JS -->
+        <script src="js/main.js"></script>
+        <!-- To load the Chart.js before the chart creation -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="js/tasks.js"></script>
+    </body>
 </html>
