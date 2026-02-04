@@ -138,3 +138,53 @@ async function loadWeather() {
 
 // Load weather on page load
 loadWeather();
+
+
+// --------------------------
+// Contact Form Validation
+// -----------------------------
+
+const contactForm = document.getElementById("contactForm");
+
+if (contactForm) {
+    contactForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const name = document.getElementById("name");
+        const email = document.getElementById("email");
+        const message = document.getElementById("message");
+
+        let isValid = true;
+
+        // Name validation
+        if (name.value.trim() === "") {
+            name.classList.add("is-invalid");
+            isValid = false;
+        } else {
+            name.classList.remove("is-invalid");
+        }
+
+        // Email validation
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email.value.trim())) {
+            email.classList.add("is-invalid");
+            isValid = false;
+        } else {
+            email.classList.remove("is-invalid");
+        }
+
+        // Message validation
+        if (message.value.trim() === "") {
+            message.classList.add("is-invalid");
+            isValid = false;
+        } else {
+            message.classList.remove("is-invalid");
+        }
+
+        // If valid, show confirmation
+        if (isValid) {
+            alert("Thank you for contacting AutoTrack Pro. We will get back to you shortly.");
+            contactForm.reset();
+        }
+    });
+}

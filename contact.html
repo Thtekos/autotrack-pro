@@ -78,15 +78,59 @@
         <main class="container" style="padding-top: 100px;">
             <!-- Page-specific content starts here -->
 
-            <section class="text-center">
-                <h1>Precision. Performance. Control.</h1>
+            <section class="text-center mb-5">
+                <h1 class="mb-3">Contact Us</h1>
                 <p class="lead">
-                    A high-performance task management system designed for luxury automotive workshops.
+                    Get in touch with AutoTrack Pro for inquiries, support, or collaboration.
                 </p>
-                
-                <a href="tasks.html" class="btn btn-outline-danger btn-lg mt-3">
-                    Go to Tasks
-                </a>
+            </section>
+
+            <section class="row justify-content-center">
+                <div class="col-md-8 col-lg-6">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+
+                            <form id="contactForm" novalidate>
+
+                                <!-- Name -->
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Full Name</label>
+                                    <input type="text" class="form-control" id="name" required>
+                                    <div class="invalid-feedback">
+                                        Please enter your name.
+                                    </div>
+                                </div>
+
+                                <!-- Email -->
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" id="email" required>
+                                    <div class="invalid-feedback">
+                                        Please enter a valid email address.
+                                    </div>
+                                </div>
+
+                                <!-- Message -->
+                                <div class="mb-3">
+                                    <label for="message" class="form-label">Message</label>
+                                    <textarea class="form-control" id="message" rows="4" required></textarea>
+                                    <div class="invalid-feedback">
+                                        Please enter a message.
+                                    </div>
+                                </div>
+
+                                <!-- Submit -->
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-outline-danger">
+                                        Send Message
+                                    </button>
+                                </div>
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <!-- Page-specific content ends here -->
