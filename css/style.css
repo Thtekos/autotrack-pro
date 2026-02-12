@@ -74,3 +74,9 @@ body.dark-mode .card .text-muted {
 body.dark-mode .card p {
     color: #eaeaea;
 }
+
+/* -------- Dark mode text fixes (About Page)-------- */
+
+body.dark-mode .text-muted {
+    color: #cccccc !important;
+}
