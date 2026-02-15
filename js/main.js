@@ -152,6 +152,7 @@ if (contactForm) {
 
         const name = document.getElementById("name");
         const email = document.getElementById("email");
+        const subject = document.getElementById("subject");
         const message = document.getElementById("message");
 
         let isValid = true;
@@ -171,6 +172,14 @@ if (contactForm) {
             isValid = false;
         } else {
             email.classList.remove("is-invalid");
+        }
+
+        // Subject Validation
+        if (subject.value.trim() === "") {    
+            subject.classList.add("is-invalid");
+            isValid = false;
+        } else {
+            subject.classList.remove("is-invalid");
         }
 
         // Message validation
