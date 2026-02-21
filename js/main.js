@@ -38,7 +38,7 @@ function renderActivity() {
 
     activityLog.forEach(activity => {
         const item = document.createElement("li");
-        item.className = "list-group-item bg-dark text-light";
+        item.className = "list-group-item";
         item.innerHTML = `
             <strong>${activity.message}</strong>
             <br>

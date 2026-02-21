@@ -96,3 +96,22 @@ body {
 main {
     flex: 1;
 }
+
+/* -------------- Social Icons ---------------- */
+
+.social-icon {
+    color: #eaeaea;
+    font-size: 1.4rem;
+    transition: all 0.25s ease;
+    display: inline-block;
+}
+
+.social-icon:hover {
+    transform: translateY(-3px);
+    color: #c8102e;
+    opacity: 0.9;
+}
+
+.social-icon:active {
+    transform: scale(0.95);
+}
