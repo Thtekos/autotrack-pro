@@ -4,7 +4,19 @@
 
 //Load tasks from localStorage or initialize empty array
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+// MIGRATION SAFETY
+tasks = tasks.map(t => {
+    if (!t.status) {
+        t.status = t.completed ? "Completed" : "Pending";
+        delete t.completed;
+    }
+    return t;
+});
+
 let taskChart = null;
+let editingTaskId = null;
+
 
 //Cache DOM elements
 const taskForm = document.getElementById("taskForm");
@@ -17,27 +29,34 @@ const completedTasksEl = document.getElementById("completedTasks");
 const statusFilter = document.getElementById("statusFilter");
 const sortTasks = document.getElementById("sortTasks");
 
+const status = document.getElementById("status");
+
 
 //Add new task
 taskForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
     const newTask = {
-        id: Date.now(),
+        id: editingTaskId || Date.now(),
         name: document.getElementById("taskName").value,
         description: document.getElementById("taskDescription").value,
         dueDate: document.getElementById("taskDueDate").value,
         priority: document.getElementById("taskPriority").value,
-        completed: false
+        status: document.getElementById("status").value
     };
 
-    tasks.push(newTask);
+    if (editingTaskId) {
+        tasks = tasks.map(t => t.id === editingTaskId ? newTask : t);
+        addActivity(`Task updated: ${newTask.name}`);
+        editingTaskId = null;
+    } else {
+        tasks.push(newTask);
+        addActivity(`Task added: ${newTask.name}`);
+    }
+
     saveTasks();
     renderTasks();
     taskForm.reset();
-
-    //Connect activity to task action
-    addActivity(`Task added: ${newTask.name}`);
 });
 
 //Save tasks to LocalStorage
@@ -53,15 +72,21 @@ function renderTasks() {
 
     // Filter by status
     if (statusFilter.value === "completed") {
-        filteredTasks = filteredTasks.filter(task => task.completed);
-    } else if (statusFilter.value === "pending") {
-        filteredTasks = filteredTasks.filter(task => !task.completed);
+        filteredTasks = filteredTasks.filter(task => task.status === "Completed");
+    } 
+    else if (statusFilter.value === "pending") {
+        filteredTasks = filteredTasks.filter(task => task.status === "Pending");
     }
 
     //Sort tasks
     if (sortTasks.value === "name") {
         filteredTasks.sort((a, b) => a.name.localeCompare(b.name));
-    } else {
+    } 
+    else if (sortTasks.value === "priority") {
+        const priorityOrder = { "High": 1, "Medium": 2, "Low": 3 };
+        filteredTasks.sort((a, b) => priorityOrder[a.priority] - priorityOrder[b.priority]);
+    } 
+    else {
         filteredTasks.sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
     }
 
@@ -79,11 +104,18 @@ function renderTasks() {
                     ${task.priority}
                 </span>
             </td>
-            <td>${task.completed ? "Completed" : "Pending"}</td>
+            
+            <td>${task.status}</td>            
+            
             <td>
+                <button class="btn btn-sm btn-primary me-2" onclick="editTask(${task.id})">
+                    ✎
+                </button>
+            
                 <button class="btn btn-sm btn-success me-2" onclick="toggleTask(${task.id})">
                     ✓
                 </button>
+            
                 <button class="btn btn-sm btn-danger" onclick="deleteTask(${task.id})">
                     ✕
                 </button>
@@ -100,10 +132,15 @@ function renderTasks() {
 //Task completion toggle
 function toggleTask(id) {
     const task = tasks.find(t => t.id === id);
-    task.completed = !task.completed;
+    if (!task) return;
 
-    if (task.completed) {
+    if (task.status === "Pending") {
+        task.status = "In Progress";
+    } else if (task.status === "In Progress") {
+        task.status = "Completed";
         addActivity(`Task completed: ${task.name}`);
+    } else {
+        task.status = "Pending";
     }
 
     saveTasks();
@@ -126,14 +163,14 @@ function deleteTask(id) {
 //Update task summary (analytics)
 function updateSummary() {
     totalTasksEl.textContent = tasks.length;
-    pendingTasksEl.textContent = tasks.filter(t => !t.completed).length;
-    completedTasksEl.textContent = tasks.filter(t => t.completed).length;
+    pendingTasksEl.textContent = tasks.filter(t => t.status === "Pending").length;
+    completedTasksEl.textContent = tasks.filter(t => t.status === "Completed").length;
 }
 
 function updateChart() {
-    const completed = tasks.filter(t => t.completed).length;
-    const pending = tasks.filter(t => !t.completed).length;
-
+    const pending = tasks.filter(t => t.status === "Pending").length;
+    const inProgress = tasks.filter(t => t.status === "In Progress").length;
+    const completed = tasks.filter(t => t.status === "Completed").length;
     const ctx = document.getElementById("taskChart");
 
     if (!ctx) return;
@@ -142,15 +179,21 @@ function updateChart() {
         taskChart.destroy();
     }
 
+    if (typeof Chart === "undefined") {
+    console.error("Chart.js not loaded");
+    return;
+}
+
     taskChart = new Chart(ctx, {
         type: "pie",
         data: {
-            labels: ["Completed", "Pending"],
+            labels: ["Pending", "In Progress", "Completed"],
             datasets: [{
-                data: [completed, pending],
+                data: [pending, inProgress, completed],
                 backgroundColor: [
-                    "#c8102e", // Porsche red
-                    "#444444"  // dark gray
+                    "#444444",  // Pending
+                    "#0d6efd",  // In Progress
+                    "#c8102e"   // Completed
                 ]
             }]
         },
@@ -160,12 +203,27 @@ function updateChart() {
                 legend: {
                     position: "bottom",
                     labels: {
-                        color: "#ffffff"
+                        color: getComputedStyle(document.body).color
                     }
                 }
             }
         }
     });
+}
+
+
+//Edit Tasks functionality
+function editTask(id) {
+    const task = tasks.find(t => t.id === id);
+    if (!task) return;
+
+    document.getElementById("taskName").value = task.name;
+    document.getElementById("taskDescription").value = task.description;
+    document.getElementById("taskDueDate").value = task.dueDate;
+    document.getElementById("taskPriority").value = task.priority;
+    document.getElementById("status").value = task.status;
+
+    editingTaskId = id;
 }
 
 //Filter/Sort changes reaction

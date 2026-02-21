@@ -80,3 +80,19 @@ body.dark-mode .card p {
 body.dark-mode .text-muted {
     color: #cccccc !important;
 }
+
+html, body {
+    height: 100%;
+}
+
+/* ------------------ Flex Layout Fix --------------*/
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
