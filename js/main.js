@@ -20,7 +20,7 @@ function addActivity(message) {
 }
 
 function renderActivity() {
-    const activityList = document.getElementById("activityList");
+    const activityList = document.querySelector("#activityList");
 
     // prevents errors on other pages
     if (!activityList) return; 
@@ -56,7 +56,7 @@ renderActivity();
 // Dark Mode Logic
 // -------------------------------
 
-const darkModeToggle = document.getElementById("darkModeToggle");
+const darkModeToggle = document.querySelector("#darkModeToggle");
 const body = document.body;
 
 // Load saved preference
@@ -82,8 +82,8 @@ if (darkModeToggle) {
 // --------------------------------
 
 async function loadPerformanceQuote() {
-    const quoteText = document.getElementById("quoteText");
-    const quoteAuthor = document.getElementById("quoteAuthor");
+    const quoteText = document.querySelector("#quoteText");
+    const quoteAuthor = document.querySelector("#quoteAuthor");
 
     // Only run on pages that have the section
     if (!quoteText || !quoteAuthor) return;
@@ -109,9 +109,9 @@ loadPerformanceQuote();
 // --------------------------------
 
 async function loadWeather() {
-    const locationEl = document.getElementById("weatherLocation");
-    const tempEl = document.getElementById("weatherTemp");
-    const conditionEl = document.getElementById("weatherCondition");
+    const locationEl = document.querySelector("#weatherLocation");
+    const tempEl = document.querySelector("#weatherTemp");
+    const conditionEl = document.querySelector("#weatherCondition");
 
     // Only run on pages that have the widget
     if (!locationEl || !tempEl || !conditionEl) return;
@@ -144,16 +144,16 @@ loadWeather();
 // Contact Form Validation
 // -----------------------------
 
-const contactForm = document.getElementById("contactForm");
+const contactForm = document.querySelector("#contactForm");
 
 if (contactForm) {
     contactForm.addEventListener("submit", function (e) {
         e.preventDefault();
 
-        const name = document.getElementById("name");
-        const email = document.getElementById("email");
-        const subject = document.getElementById("subject");
-        const message = document.getElementById("message");
+        const name = document.querySelector("#name");
+        const email = document.querySelector("#email");
+        const subject = document.querySelector("#subject");
+        const message = document.querySelector("#message");
 
         let isValid = true;
 

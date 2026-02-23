@@ -19,17 +19,17 @@ let editingTaskId = null;
 
 
 //Cache DOM elements
-const taskForm = document.getElementById("taskForm");
-const taskTableBody = document.getElementById("taskTableBody");
+const taskForm = document.querySelector("#taskForm");
+const taskTableBody = document.querySelector("#taskTableBody");
 
-const totalTasksEl = document.getElementById("totalTasks");
-const pendingTasksEl = document.getElementById("pendingTasks");
-const completedTasksEl = document.getElementById("completedTasks");
+const totalTasksEl = document.querySelector("#totalTasks");
+const pendingTasksEl = document.querySelector("#pendingTasks");
+const completedTasksEl = document.querySelector("#completedTasks");
 
-const statusFilter = document.getElementById("statusFilter");
-const sortTasks = document.getElementById("sortTasks");
+const statusFilter = document.querySelector("#statusFilter");
+const sortTasks = document.querySelector("#sortTasks");
 
-const status = document.getElementById("status");
+const status = document.querySelector("#status");
 
 
 //Add new task
@@ -38,11 +38,11 @@ taskForm.addEventListener("submit", function (e) {
 
     const newTask = {
         id: editingTaskId || Date.now(),
-        name: document.getElementById("taskName").value,
-        description: document.getElementById("taskDescription").value,
-        dueDate: document.getElementById("taskDueDate").value,
-        priority: document.getElementById("taskPriority").value,
-        status: document.getElementById("status").value
+        name: document.querySelector("#taskName").value,
+        description: document.querySelector("#taskDescription").value,
+        dueDate: document.querySelector("#taskDueDate").value,
+        priority: document.querySelector("#taskPriority").value,
+        status: document.querySelector("#status").value
     };
 
     if (editingTaskId) {
@@ -171,7 +171,7 @@ function updateChart() {
     const pending = tasks.filter(t => t.status === "Pending").length;
     const inProgress = tasks.filter(t => t.status === "In Progress").length;
     const completed = tasks.filter(t => t.status === "Completed").length;
-    const ctx = document.getElementById("taskChart");
+    const ctx = document.querySelector("#taskChart");
 
     if (!ctx) return;
 
@@ -217,11 +217,11 @@ function editTask(id) {
     const task = tasks.find(t => t.id === id);
     if (!task) return;
 
-    document.getElementById("taskName").value = task.name;
-    document.getElementById("taskDescription").value = task.description;
-    document.getElementById("taskDueDate").value = task.dueDate;
-    document.getElementById("taskPriority").value = task.priority;
-    document.getElementById("status").value = task.status;
+    document.querySelector("#taskName").value = task.name;
+    document.querySelector("#taskDescription").value = task.description;
+    document.querySelector("#taskDueDate").value = task.dueDate;
+    document.querySelector("#taskPriority").value = task.priority;
+    document.querySelector("#status").value = task.status;
 
     editingTaskId = id;
 }
