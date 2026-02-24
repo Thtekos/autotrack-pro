@@ -28,12 +28,12 @@ function renderActivity() {
     activityList.innerHTML = "";
 
     if (activityLog.length === 0) {
-        activityList.innerHTML = `
-            <li class="list-group-item bg-dark text-light">
-                No recent activity recorded.
-            </li>
-        `;
-        return;
+    activityList.innerHTML = `
+        <li class="list-group-item">
+            No recent activity recorded.
+        </li>
+    `;
+    return;
     }
 
     activityLog.forEach(activity => {
@@ -64,15 +64,34 @@ if (localStorage.getItem("darkMode") === "enabled") {
     body.classList.add("dark-mode");
 }
 
+const navbar = document.querySelector(".main-navbar");
+if (body.classList.contains("dark-mode") && navbar) {
+    navbar.classList.remove("navbar-light");
+    navbar.classList.add("navbar-dark");
+}
+
 // Toggle dark mode
 if (darkModeToggle) {
     darkModeToggle.addEventListener("click", () => {
-        body.classList.toggle("dark-mode");
+        document.body.classList.toggle("dark-mode");
+        if (typeof renderTasks === "function") {
+            renderTasks();   // Re-render chart with updated legend color    
+        }
+
+        const navbar = document.querySelector(".main-navbar");
 
         if (body.classList.contains("dark-mode")) {
             localStorage.setItem("darkMode", "enabled");
+            if (navbar) {
+                navbar.classList.remove("navbar-light");
+                navbar.classList.add("navbar-dark");
+            }
         } else {
             localStorage.setItem("darkMode", "disabled");
+            if (navbar) {
+                navbar.classList.remove("navbar-dark");
+                navbar.classList.add("navbar-light");
+            }
         }
     });
 }

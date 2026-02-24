@@ -29,20 +29,27 @@ const completedTasksEl = document.querySelector("#completedTasks");
 const statusFilter = document.querySelector("#statusFilter");
 const sortTasks = document.querySelector("#sortTasks");
 
-const status = document.querySelector("#status");
+const statusSelect = document.querySelector("#status");
+
+const taskNameInput = document.querySelector("#taskName");
+const taskDescriptionInput = document.querySelector("#taskDescription");
+const taskDueDateInput = document.querySelector("#taskDueDate");
+const taskPriorityInput = document.querySelector("#taskPriority");
+const taskChartCanvas = document.querySelector("#taskChart");
 
 
 //Add new task
-taskForm.addEventListener("submit", function (e) {
+if (taskForm) {  //if statement protects loading without #taskForm
+    taskForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
     const newTask = {
         id: editingTaskId || Date.now(),
-        name: document.querySelector("#taskName").value,
-        description: document.querySelector("#taskDescription").value,
-        dueDate: document.querySelector("#taskDueDate").value,
-        priority: document.querySelector("#taskPriority").value,
-        status: document.querySelector("#status").value
+        name: taskNameInput.value,
+        description: taskDescriptionInput.value,
+        dueDate: taskDueDateInput.value,
+        priority: taskPriorityInput.value,
+        status: statusSelect.value
     };
 
     if (editingTaskId) {
@@ -58,6 +65,7 @@ taskForm.addEventListener("submit", function (e) {
     renderTasks();
     taskForm.reset();
 });
+}
 
 //Save tasks to LocalStorage
 function saveTasks() {
@@ -97,10 +105,7 @@ function renderTasks() {
             <td>${task.name}</td>
             <td>${task.dueDate}</td>
             <td>
-                <span class="badge ${
-                    task.priority === "High" ? "bg-danger" :
-                    task.priority === "Medium" ? "bg-secondary" : "bg-light text-dark"
-                }">
+                <span class="badge priority-badge ${task.priority.toLowerCase()}">
                     ${task.priority}
                 </span>
             </td>
@@ -171,7 +176,7 @@ function updateChart() {
     const pending = tasks.filter(t => t.status === "Pending").length;
     const inProgress = tasks.filter(t => t.status === "In Progress").length;
     const completed = tasks.filter(t => t.status === "Completed").length;
-    const ctx = document.querySelector("#taskChart");
+    const ctx = taskChartCanvas.getContext("2d");
 
     if (!ctx) return;
 
@@ -217,11 +222,11 @@ function editTask(id) {
     const task = tasks.find(t => t.id === id);
     if (!task) return;
 
-    document.querySelector("#taskName").value = task.name;
-    document.querySelector("#taskDescription").value = task.description;
-    document.querySelector("#taskDueDate").value = task.dueDate;
-    document.querySelector("#taskPriority").value = task.priority;
-    document.querySelector("#status").value = task.status;
+    taskNameInput.value = task.name;
+    taskDescriptionInput.value = task.description;
+    taskDueDateInput.value = task.dueDate;
+    taskPriorityInput.value = task.priority;
+    statusSelect.value = task.status;
 
     editingTaskId = id;
 }
@@ -232,4 +237,3 @@ sortTasks.addEventListener("change", renderTasks);
 
 //Initial render
 renderTasks();
-

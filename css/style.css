@@ -1,5 +1,8 @@
 body {
     font-family: 'Inter', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 /* -------------------Dark Mode Styles ------------------------- */
@@ -9,27 +12,32 @@ body.dark-mode {
     color: #eaeaea;
 }
 
-/* Navbar */
-body.dark-mode .navbar {
-    background-color: #000000 !important;
+/* -------- Cards --------- */
+
+.card {
+    background-color: #ffffff;
+    color: #212529;
 }
 
-/* Cards */
 body.dark-mode .card {
     background-color: #1c1c1c;
     border-color: #333;
+    color: #eaeaea;
 }
 
-/* Tables */
+/* --------- Tables ------- */
+
 body.dark-mode .table {
     color: #eaeaea;
 }
 
-body.dark-mode .table thead {
-    background-color: #000000;
+body.dark-mode .table thead th {
+    background-color: #000000 !important;
+    color: #ffffff !important;
 }
 
-/* Forms */
+/* ------- Forms ------ */
+
 body.dark-mode .form-control,
 body.dark-mode .form-select {
     background-color: #1c1c1c;
@@ -41,7 +49,8 @@ body.dark-mode .form-control::placeholder {
     color: #888;
 }
 
-/* List groups (Latest Activity) */
+/* --------- List groups (Latest Activity)----- */
+
 body.dark-mode .list-group-item {
     background-color: #1c1c1c;
     color: #eaeaea;
@@ -57,18 +66,14 @@ body.dark-mode .navbar .nav-link {
     opacity: 0.85;
 }
 
-/* ---------- API Dark Mode Fix --------------- */
-
-body.dark-mode .card {
-    color: #eaeaea;
+body.dark-mode .table-hover tbody tr:hover {
+    background-color: #2a2a2a;
 }
+
+/* ---------- API Dark Mode Fix --------------- */
 
 body.dark-mode .card .card-title {
     color: #ffffff;
-}
-
-body.dark-mode .card .text-muted {
-    color: #bbbbbb !important;
 }
 
 body.dark-mode .card p {
@@ -85,22 +90,10 @@ html, body {
     height: 100%;
 }
 
-/* ------------------ Flex Layout Fix --------------*/
-
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-main {
-    flex: 1;
-}
-
 /* -------------- Social Icons ---------------- */
 
 .social-icon {
-    color: #eaeaea;
+    color: #212529;
     font-size: 1.4rem;
     transition: all 0.25s ease;
     display: inline-block;
@@ -114,4 +107,109 @@ main {
 
 .social-icon:active {
     transform: scale(0.95);
+}
+
+/* -------- Default (Light Mode) ------- */
+
+.main-navbar {
+    background-color: #f8f9fa;
+}
+
+body.dark-mode .main-navbar {
+    background-color: #1c1c1c;
+}
+
+/*----- Footer Fix ------- */
+
+.site-footer {
+    background-color: #f8f9fa;
+    color: #212529;
+}
+
+body.dark-mode .site-footer {
+    background-color: #1c1c1c;
+    color: #eaeaea;
+}
+
+body.dark-mode .social-icon {
+    color: #eaeaea;
+}
+
+/* ---------- Navbar Text Fix --------- */
+
+.main-navbar .navbar-brand,
+.main-navbar .nav-link {
+    color: #212529 !important;
+}
+
+body.dark-mode .main-navbar .navbar-brand,
+body.dark-mode .main-navbar .nav-link {
+    color: #eaeaea !important;
+}
+
+/* -------- Light mode table -------- */
+
+.table {
+    background-color: #ffffff;
+    color: #212529;
+}
+
+/* ---------  Dark mode table ------- */
+
+body.dark-mode .table {
+    background-color: #1c1c1c;
+    color: #eaeaea;
+}
+
+/* ------- CTA Section ------- */
+
+/* Light mode (default) */
+.cta-section {
+    background-color: #f8f9fa;
+    color: #212529;
+}
+
+/* Dark mode */
+body.dark-mode .cta-section {
+    background-color: #1c1c1c;
+    color: #ffffff;
+}
+
+/* ------ Priority badges ------- */
+
+.priority-badge.high {
+    background-color: #c8102e;
+    color: #ffffff;
+}
+
+.priority-badge.medium {
+    background-color: #6c757d;
+    color: #ffffff;
+}
+
+.priority-badge.low {
+    background-color: #e0e0e0;
+    color: #212529;
+}
+
+body.dark-mode .priority-badge.low {
+    background-color: #444444;
+    color: #ffffff;
+}
+
+/* ------- Force dark table rows ------ */
+body.dark-mode .table > :not(caption) > * > * {
+    background-color: #1c1c1c !important;
+    color: #eaeaea !important;
+}
+
+body.dark-mode .table {
+    border-color: #333 !important;
+}
+
+/* ----- Chart Centering Fix ------ */
+#taskChart {
+    max-width: 400px;
+    margin: 0 auto;
+    display: block;
 }
