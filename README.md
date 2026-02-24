@@ -3,7 +3,7 @@ Precision Task & Workflow Management for Performance Workshops
 
 AutoTrack Pro is a responsive task management system designed specifically for high-performance automotive workshops. It provides structured task tracking, priority management, analytics visualization, and dark/light mode support — all within a clean, modern UI.
 
-⸻
+-----
 
 Project Overview:
 
@@ -18,7 +18,7 @@ AutoTrack Pro helps workshop managers:
 
 The system is optimized for clarity, responsiveness, and professional presentation.
 
-⸻
+-----
 
 Tech Stack:
 
@@ -34,28 +34,28 @@ JavaScript
 	- Chart.js (for analytics visualization)
 	- LocalStorage API (data persistence)
 
-⸻
+-----
 
 Project Structure:
 
 AutoTrack-Pro/
-│
-├── index.html
-├── tasks.html
-├── services.html
-├── about.html
-├── contact.html
-│
-├── css/
-│   └── style.css
-│
-├── js/
-│   ├── main.js
-│   └── tasks.js
-│
-└── README.md
+|
+|-- index.html
+|-- tasks.html
+|-- services.html
+|-- about.html
+|-- contact.html
+|
+|-- css/
+|   |-- style.css
+|
+|-- js/
+|   |-- main.js
+|   |-- tasks.js
+|
+|-- README.md
 
-⸻
+-----
 
 Core Features:
 
@@ -70,7 +70,7 @@ Core Features:
 	 - Delete tasks
 	 - Cycle through status using toggle button
 
-⸻
+-----
 
 2. Data Persistence
 
@@ -81,7 +81,7 @@ This ensures:
 	- No backend required
 	- Fully client-side operation
 
-⸻
+-----
 
 3. Task Filtering & Sorting
 
@@ -98,7 +98,7 @@ Users can:
 Sorting logic uses custom priority ordering:
   const priorityOrder = { "High": 1, "Medium": 2, "Low": 3 };
 
-⸻
+-----
 
 4. Task Analytics (Chart.js)
 
@@ -118,7 +118,7 @@ Chart configuration includes:
 	- Dynamic legend color based on theme
 	- Automatic chart re-rendering
 
-⸻
+-----
 
 5. Dark / Light Mode
 
@@ -140,7 +140,7 @@ Design principle:
   Default = Light Mode
   body.dark-mode = Override Styles
 
-⸻
+-----
 
 6. Responsive Design
 
@@ -158,7 +158,7 @@ Responsive elements:
 	- Centered analytics chart
 	- Flexbox alignment
 
-⸻
+-----
 
 Design System:
 
@@ -174,7 +174,7 @@ Typography:
 	- Inter (Google Font)
 	- Clean, modern, technical aesthetic
 
-⸻
+-----
 
 Installation & Setup:
 
@@ -185,41 +185,35 @@ Option 1: Simple Local Use
 
 No build tools required.
 
-⸻
-
 Option 2: VS Code Live Server (Recommended and personally used)
 	1.	Install Live Server extension
 	2.	Right-click index.html
 	3.	Select Open with Live Server
 
-⸻
+-----
 
 How the Task Flow Works
 	1.	User submits form
 	2.	Task object is created:
-        {
             id,
             name,
             description,
             dueDate,
             priority,
-            status
-        }
-
+            status	
 	3.	Task saved to localStorage
 	4.	UI re-renders:
 	    - Table updated
 	    - Summary cards updated
 	    - Chart refreshed
 
-⸻
+-----
 
 Status Lifecycle:
-
-    Status cycles as:
+	Status cycles as:
       Pending → In Progress → Completed → Pending
-
-⸻
+	  
+-----
 
 Performance Considerations:
 	- Chart instance is destroyed before re-creation to prevent memory leaks.
@@ -227,7 +221,7 @@ Performance Considerations:
 	- DOM elements are cached for performance.
 	- Conditional form binding prevents errors when loading pages without task form.
 
-⸻
+-----
 
 Known Limitations:
 	•	No backend integration
@@ -236,7 +230,7 @@ Known Limitations:
 	•	LocalStorage can be browser-specific
 	•	No export functionality
 
-⸻
+-----
 
 Future Improvements:
 
@@ -251,7 +245,7 @@ Ideal enhancements to make it portfolio-level:
 	- Persistent dark mode preference
 	- Advanced filtering (by date range)
 
-⸻
+-----
 
 Conclusion:
 
