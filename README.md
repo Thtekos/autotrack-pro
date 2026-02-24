@@ -97,8 +97,9 @@ Users can:
 	- Priority (High → Low)
 
 Sorting logic uses custom priority ordering:
+```
   const priorityOrder = { "High": 1, "Medium": 2, "Low": 3 };
-
+```
 -----
 
 4. Task Analytics (Chart.js)
@@ -163,6 +164,7 @@ Responsive elements:
 
 Design System:
 
+```
   Color Palette:
     - Element - Color
     - Primary Accent - #c8102e
@@ -170,6 +172,7 @@ Design System:
     - Card Dark - #1c1c1c
     - Light Background - #f8f9fa
     - Muted Text - #6c757d
+```
 
 Typography:
 	- Inter (Google Font)
