@@ -38,22 +38,23 @@ JavaScript
 
 Project Structure:
 
-AutoTrack-Pro/
-|
-|-- index.html
-|-- tasks.html
-|-- services.html
-|-- about.html
-|-- contact.html
-|
-|-- css/
-|   |-- style.css
-|
-|-- js/
-|   |-- main.js
-|   |-- tasks.js
-|
-|-- README.md
+```
+Autotrack Pro
+│   ├── index.html
+│   ├── tasks.html
+│   ├── services.html
+│   ├── about.html
+│   ├── contact.html
+│   ├──             
+│   └── css
+│   	├── style.css
+│   ├──             
+│   └── js
+│   	├── main.js
+│   	├── tasks.js
+│
+└── README.md
+```
 
 -----
 
