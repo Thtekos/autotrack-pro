@@ -1,11 +1,11 @@
-AutoTrack Pro
-Precision Task & Workflow Management for Performance Workshops
+# AutoTrack Pro
+## Precision Task & Workflow Management for Performance Workshops
 
-AutoTrack Pro is a responsive task management system designed specifically for high-performance automotive workshops. It provides structured task tracking, priority management, analytics visualization, and dark/light mode support — all within a clean, modern UI.
+### AutoTrack Pro is a responsive task management system designed specifically for high-performance automotive workshops. It provides structured task tracking, priority management, analytics visualization, and dark/light mode support — all within a clean, modern UI.
 
 -----
 
-Project Overview:
+### Project Overview:
 
 AutoTrack Pro helps workshop managers:
     - Create and manage service tasks
@@ -20,7 +20,7 @@ The system is optimized for clarity, responsiveness, and professional presentati
 
 -----
 
-Tech Stack:
+### Tech Stack:
 
 Frontend
 	- HTML5
@@ -36,7 +36,7 @@ JavaScript
 
 -----
 
-Project Structure:
+### Project Structure:
 
 ```
 Autotrack Pro
@@ -58,7 +58,7 @@ Autotrack Pro
 
 -----
 
-Core Features:
+### Core Features:
 
 1. Task Management
 	Add new tasks with:
@@ -162,7 +162,7 @@ Responsive elements:
 
 -----
 
-Design System:
+### Design System:
 
 ```
   Color Palette:
@@ -180,7 +180,7 @@ Typography:
 
 -----
 
-Installation & Setup:
+### Installation & Setup:
 
 Option 1: Simple Local Use
 	1.	Download or clone repository:
@@ -196,7 +196,7 @@ Option 2: VS Code Live Server (Recommended and personally used)
 
 -----
 
-How the Task Flow Works
+### How the Task Flow Works
 	1.	User submits form
 	2.	Task object is created:
             id,
@@ -213,13 +213,13 @@ How the Task Flow Works
 
 -----
 
-Status Lifecycle:
+### Status Lifecycle:
 	Status cycles as:
       Pending → In Progress → Completed → Pending
 	  
 -----
 
-Performance Considerations:
+### Performance Considerations:
 	- Chart instance is destroyed before re-creation to prevent memory leaks.
 	- Tasks are cloned before filtering/sorting to prevent mutation.
 	- DOM elements are cached for performance.
@@ -227,7 +227,7 @@ Performance Considerations:
 
 -----
 
-Known Limitations:
+### Known Limitations:
 	•	No backend integration
 	•	No multi-user support
 	•	No authentication system
@@ -236,9 +236,8 @@ Known Limitations:
 
 -----
 
-Future Improvements:
+### Future Improvements:
 
-Ideal enhancements to make it portfolio-level:
 	- Export tasks to CSV
 	- Search functionality
 	- Drag & drop reordering
@@ -251,7 +250,7 @@ Ideal enhancements to make it portfolio-level:
 
 -----
 
-Conclusion:
+### Conclusion:
 
 AutoTrack Pro demonstrates:
 	- Structured frontend architecture
